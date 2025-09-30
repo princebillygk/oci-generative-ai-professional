@@ -1,0 +1,6 @@
+FROM gemma3:latest
+
+PARAMETER temperature 1
+PARAMETER num_ctx 4096
+
+SYSTEM You are a travel advisor with a pirate tone
