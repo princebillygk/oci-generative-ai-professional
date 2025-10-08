@@ -1,122 +1,156 @@
-# What is LM
-LM: Is probabilistic model of text
+You can create a generative AI service
+# Features for OCI Generative AI
+* Fully managed service
+* You have choice of models
+* Flexible fine tuning
+* Dedicated AI Clusters: GPU based compute resources
 
-## LLM Architecture
+# Pre-trained Foundational Models
+## Chat Models
+Ask questions and get conversational response
+#### command-r-plus
+Entry level usecase, afford able
+- 128k tokens prompt -> 4k response tokens
+- Highly performan,
+#### command-r-16k
+* Smaller and faster
+* 16k prompt token -> 4k response tokens
+#### llama 3.1-70b/40b instruct
+* largest publicly available model in the market
 
-## Prompting and Training
+### Embedding Model
+Convert text to Vector of numbers =>  Semantic Search
+* Semantic search (search based on the meaning of text rather than the keyword or lexical search)
+* Multilingual search (supports multiple language)
+* Give each token different numbers for each of the features
+* Semantic similarity: Dot product, Cosine (Find numerical similarity because it will also be semantically similarity)
+# Fine Tuning
+* Optimizing a pretrained foundation model on a smaller domain specific dataset
+	* Improve Model Performance on specific tasks
+	* Improve Model Efficiency
+* Use when a pretrained model doesn't perform you task well or you want to teach it something new
+* T-Few tuning (Cohere) enables fast and efficient customizations
+## Preamble override
+A set of initial instruction for the model
+### OCI
+* There is a option preamble override in chat parameters
+### Ollama 
+ * `SYSTEM`
+```Modelfile
+FROM gemma3:latest
 
-## Encoder
-Models that convert sequence of words to an  embedding (vectors representation)
+PARAMETER temperature 1
+PARAMETER num_ctx 4096
 
-The sent me a text -> Bert -> Vector representation
+SYSTEM You are a travel advisor with a pirate tone
 
-Examples: MiniLM, Embed-Light, Bert, RoBERTA, DistillBert, SBERT
-
-# Decoder
-Models take a sequence of words and output next word
-
-Examples: GPT-4, Llama, BLOOM, Falcon
-
-Used: 
-Answer question, Genertic Dialogs
-
-# Encoder - Decoder
-encodes a sequence of words and use the encoding + to output a next word
-
-### Usage of each
-
-| Task                      | Encoders | Decoders | Encoder-Decoder |
-| ------------------------- | -------- | -------- | --------------- |
-| Embedding Text            | Yes      | No       | No              |
-| Abstractive QA            | No       | Yes      | Yes             |
-| Extractive QA             | Yes      | Maybe    | Yes             |
-| Translation               | No       | Maybe    | Yes             |
-| Creative Writting         | No       | Yes      | No              |
-| Abstractive Summarization | No       | Yes      | Yes             |
-| Extractive Summarization  | Yes      | Maybe    | Yes             |
-| Chat                      | No       | Yes      | No              |
-| Forecasting               | No       | No       | No              |
-| Code                      | No       | Yes      | Yes             |
-# Prompting
-
-### Prompt engineering
-
-This process of itteratively refining a prompt to get the expected result
-### K-shot Prompting
-1) Giving K Examples and then tell to do the next
-```
-Add 3 + 4 = 7
-Add 6 + 5 = 11
-Add 1 + 8 = ?
 ```
 
-## Prompting Strategies
+## Parameters
 
-#### Chain of thoughts
-Give a problem in small chunks rather than giving the whole problem together
+### OCI
+* OCI have inputs
+	* Max output tokens
+	* Preamble override
+	* Temperature
+		* Controls the randomness of the LLM Output
+		* 0 makes the model deterministic
+	* Top K
+		* Will pick from top k tokens
+	* Top P
+		* Pick based on the sum of the token values
+	* Frequency and Presence Penalties
+		* To avoid repetition in output
+		
 
-#### Least to most
-Easy First and the give harder
+### Ollama
+* `PARAMETER`
+	
 
-#### Step - Back  (Chemistry - Physics)
-Questions: Higher level concept
+## Embedding
 
+Converting list of strings to vector
+### OCI
+* Have UI for converting list of strings to vector and see project in 2D though the project is in many dimention and cannot be represent visually.
+### Ollama
+Ollama we can use different embedding model to generate vector and then use it to work on that vector datacan 
 
-## Issues with prompting
-#### Prompt Injection (Issue Bad Prompt)
-Tell LLM to ignore previous instruction and do whatever you want
-#### Leaked Prompt
-Leaking private information
+```shell
+curl http://localhost:11434/api/embed -d '{
+  "model": "mxbai-embed-large",
+  "input": "Llamas are members of the camelid family"
+}'
+```
 
+Read more details here:
+https://ollama.com/blog/embedding-models
 
+# Dedicated AI Clusters
 
-# Training
-### Domain Adaptation
-Alter the parameters of model until you get exceptable answer
+1) Compute engine with GPU
 
-
-| Training Style      | Modifies            | Data                   | Summary                                                   |
-| ------------------- | ------------------- | ---------------------- | --------------------------------------------------------- |
-| Fine Tuning (FT)    | All Parameters      | Labeled, task-specific | Expensive                                                 |
-| Param. Efficient FT | Few, new parameters | Labeled, task-specific | A small set of parameters and adding aditional parameters |
-| Soft Prompting      | Few, new parameters | Labeled, task-specific | Learnable prompt params                                   |
-| Cont. Pre Training  | All parameters      | unlabled               | Same as LLM pre-training                                  |
-# Decoding
-
-### Greedy Decoding
-Pick the highest probability word at each step
-(EOS) = End of sentence
-
-### Non-Deterministic Decoding
-Pick randomly among high probability candidates at each step
-##### Temperature
-When temperature is decreased, the distribution is more peaked around the most likely word
-
-
-# Hallucination
-Generated text that is non factual or ungrounded 
-(Grounded means it is written somewhere in the document has source)
-
-Decreasing techniques:
-1. (K - shot helps a little bit)
-2. RAG
-
-# RAG
-Input -> Transform question into query -> retrieve doc -> LLM
-
-### Code Model
-Copilot, Codex
-
-# Multimodel
-Trained on language image, audio
-DALL-E 
-Stable Diffusion
+# Token
+A word can be one or multiple token
+apple -> 1 token
+friendship -> 2 token (friend + ship)
 
 
+# Cost of training model
+* 1M per 1B token
+* Bad idea to start from scratch
 
-## Language Agents
+# Customizing LLM
 
-#### ReAct
-Leveraging LLMS for language agents
-#### Toolformer
-Pre-training technique where strings are replaced with calls to tools that yeild result. Use tools ad api for few tasks
+| Method           | Description                                                                                   | When to use                                                                                                                        | Pros                                                                              | Cons                                                                             |
+| ---------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| K-shot Prompting | Provide few examples in the prompt before the actual request                                  | LLM already understands topic that are necessary for the text generation                                                           | Very simple no costing                                                            | Adds latency to each model request                                               |
+| Fine Tuning      | Adapt a pertained LLM to performance a specific task on private data                          | LLM doesn't work well on particula task<br>Data required to adapt the LLM is too large<br>Latency with the current LLM is too high | Increase model performance on a specific task<br>no impact on latency             | Requires a labeled data set which can be expensive and time consuming to require |
+| RAG              | Optimize the output of a LLM with targeted information without modifying the underlying model | When data changes rapidly,<br>And when you want to mitigate hallucinations                                                         | Access the latest data<br>Grounds the result<br>Does not require fine tuning jobs | More complex to setup Requires a compatible data source                          |
+![[Pasted image 20251002151158.png]]
+
+## Steps of customization
+1) Start with a simple prompt
+2) Add few shot prompting
+3) Add simple retrieval using RAG
+4) Find tune the model
+5) Optimize the retrieval on find tuned model
+
+
+## Model endpoint:
+Where a large language model can accept user requests and send back responses such as the model's generated text
+
+## Cluster Types
+1) Training cluster: For fine tuning and training model
+2) Hosting: for hosting existing model
+
+# Fine tuning
+### Vanilla fine tuning: 
+Updating the weights of all the layers in the model, requiring longer training time and higher serving costs
+### T-few Fine tuning
+T-Few fine tuning selectively updates only a fraction of the model's weights
+
+
+# Training Method for smaller adjustment
+1) T-Few: PEFT
+2) LoRA: PEFT (Leaves the main model unchanged just add few more gears)
+
+## T-Few input Parameters
+
+	1) Total Training Epoch
+	2) Training batch size
+	3) Learning Rate
+	4) Early stopping paitience
+	5) Log model metrix intervals in steps
+## Fine tunning file json format
+```json
+[
+   {prompt: '', 'completions': ''}
+   ...
+]
+```
+
+## Fine tuning input parameters
+1) Accuracy (ratio of correct token) - max (1)
+2) Loss (ratio of incorrect response)
+
+
