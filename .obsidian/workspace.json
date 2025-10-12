@@ -1,41 +1,56 @@
 {
   "main": {
-    "id": "147afa65ac02eccc",
+    "id": "8a93b261d0b28db3",
     "type": "split",
     "children": [
       {
-        "id": "e3a99b7661192cad",
+        "id": "ebb68cfd780354a4",
         "type": "tabs",
         "children": [
           {
-            "id": "1700a25bd6031134",
+            "id": "a1fd3c00879a8ebb",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "notes/Exam Prep.md",
+                "file": "Services.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Exam Prep"
+              "title": "Services"
+            }
+          },
+          {
+            "id": "a83607ae30a8acb6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Services.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Services"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "7eac0227dad324f9",
+    "id": "dccf6d16df937cdd",
     "type": "split",
     "children": [
       {
-        "id": "f3ad54b7272fe155",
+        "id": "fc760dcbe39364f4",
         "type": "tabs",
         "children": [
           {
-            "id": "f5efd0a568ee4459",
+            "id": "968a6f68e3d359b4",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +63,7 @@
             }
           },
           {
-            "id": "7acc6afc6179a8dc",
+            "id": "dcabe8e0077eefb0",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +80,7 @@
             }
           },
           {
-            "id": "31bd19070dafcc76",
+            "id": "68f36c687e77c337",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -81,20 +96,20 @@
     "width": 300
   },
   "right": {
-    "id": "bdb29e87fa757c20",
+    "id": "169fc2cc1aa3934d",
     "type": "split",
     "children": [
       {
-        "id": "a376141761a826e6",
+        "id": "a8287ecc871ab3b5",
         "type": "tabs",
         "children": [
           {
-            "id": "01c078b2e9859636",
+            "id": "7f5e89d4bd99e3e9",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "notes/Exam Prep.md",
+                "file": "Services.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,25 +119,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for Exam Prep"
+              "title": "Backlinks for Services"
             }
           },
           {
-            "id": "42008403f2b7fc96",
+            "id": "cb13d18f851b5480",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "notes/Exam Prep.md",
+                "file": "Services.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from Exam Prep"
+              "title": "Outgoing links from Services"
             }
           },
           {
-            "id": "fe4474f674989939",
+            "id": "e68fd5ee52e6b2dc",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -137,18 +152,18 @@
             }
           },
           {
-            "id": "7a31247868248468",
+            "id": "184eb594e3c99ee2",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "notes/Exam Prep.md",
+                "file": "Services.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Exam Prep"
+              "title": "Outline of Services"
             }
           }
         ]
@@ -169,12 +184,13 @@
       "bases:Create new base": false
     }
   },
-  "active": "1700a25bd6031134",
+  "active": "968a6f68e3d359b4",
   "lastOpenFiles": [
-    "notes/Introduction.md",
-    "notes/Exam Prep.md",
-    "notes/Services.md",
-    "Untitled.canvas",
-    "notes/Introduction 1.md"
+    "Untitled.md",
+    "Untitled.base",
+    "Introduction.md",
+    "Services.md",
+    "assets",
+    "assets/Pasted image 20251002151158.png"
   ]
 }
