@@ -488,4 +488,4 @@ A feature designed to detect or filter out toxic, violent, abusive, hateful, thr
 6. Simple customization? → Use **Few-Shot Prompting**
 
 ### More Resources
-- [Tricky and important questions]('./Tricky and Important questions.md')
+[Tricky and important questions](./Tricky%20and%20Important%20questions.md)
